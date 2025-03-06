@@ -17,7 +17,7 @@ The `HTTPError` package provides a robust error handling solution for HTTP servi
 ### Installation
 
 ```go
-go get github.com/yourusername/ectoerror
+go get -u github.com/Gobusters/ectoerror
 ```
 
 ### Usage
