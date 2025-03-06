@@ -68,6 +68,17 @@ func IsHTTPError(err error) bool {
 	return errors.As(err, &httpErr)
 }
 
+// ToHTTPError converts an error to an HTTPError if it is an HTTPError.
+func ToHTTPError(err error) *HTTPError {
+	if err == nil {
+		return nil
+	}
+	if httpErr, ok := err.(*HTTPError); ok {
+		return httpErr
+	}
+	return WrapError(GetStatusCode(err), err)
+}
+
 // IsOK checks if the provided error is an HTTPError with a status code of 200.
 func IsOK(err error) bool {
 	var httpErr *HTTPError
